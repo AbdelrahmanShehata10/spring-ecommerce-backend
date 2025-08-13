@@ -1,0 +1,70 @@
+🛡️ E-COMMERCE BACKEND PLATFORM – BACKEND CAPABILITIES
+
+✅ Overview
+
+This project is a secure and modular backend for an e-commerce application, built using Java Spring Boot. It supports robust authentication, role-based authorization, and clean separation of responsibilities across APIs.
+
+🔐 Security Architecture
+
+JWT-based stateless authentication ensures each request is independently verified.
+
+Role-based access control enforces different permissions for users and admins.
+
+Passwords are hashed using BCryptPasswordEncoder for strong encryption.
+
+A custom JWT authentication filter validates tokens on every request.
+
+Access rules are enforced via @PreAuthorize and request matcher configurations.
+
+Security mode is configured as STATELESS, avoiding any session-based vulnerabilities.
+
+👥 User Roles
+
+ADMIN: Full access to create, update, delete products.
+
+USER: Can register, log in, and browse available products.
+
+🧩 API Capabilities
+
+🧾 Authentication
+
+/auth/register: Register new users (accessible to everyone).
+
+/auth/login: Authenticate and receive a JWT (accessible to everyone).
+
+🛒 Product Management (/products)
+
+GET /prod: View all products (USER / ADMIN)
+
+POST /create_product: Add new product (ADMIN only)
+
+PUT /{id}: Update product details (ADMIN only)
+
+DELETE /{id}: Delete product (ADMIN only)
+
+🗂️ Design Principles
+
+Clean DTO ↔ Entity mapping with a mapper layer.
+
+Separation of concerns between controller, service, and repository layers.
+
+Annotations-based access control (@PreAuthorize, role checking).
+
+Modular structure prepared for scalability and future features (e.g., cart, orders).
+
+📌 Deployment Readiness
+
+Runs locally using Spring Boot dev tools.
+
+Compatible with PostgreSQL / H2 / MySQL.
+
+Easily testable via Postman or a Flutter frontend.
+
+Securely structured for public GitHub publishing and future deployment.
+
+🔍 Final Notes
+
+JWTs carry user roles, allowing fine-grained backend authorization.
+
+The system is built with scalability, security, and extensibility in mind.
+
