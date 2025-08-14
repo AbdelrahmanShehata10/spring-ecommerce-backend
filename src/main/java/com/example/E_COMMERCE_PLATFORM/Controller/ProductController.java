@@ -3,12 +3,15 @@ package com.example.E_COMMERCE_PLATFORM.Controller;
 import com.example.E_COMMERCE_PLATFORM.DTO.ProductDTO;
 import com.example.E_COMMERCE_PLATFORM.DTO.UserDto;
 import com.example.E_COMMERCE_PLATFORM.Entites.Product;
+import com.example.E_COMMERCE_PLATFORM.Entites.Users;
 import com.example.E_COMMERCE_PLATFORM.Mapper.ProductMapper;
 import com.example.E_COMMERCE_PLATFORM.REPO.Product_repo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,9 +42,8 @@ return  ResponseEntity.ok(productMapper.toDto(product));
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ProductDTO> updateproduct(@PathVariable (name = "id") int id,
-                                              @RequestBody  ProductDTO update
+                                                    @RequestBody  ProductDTO update
     ){
-
         var product = repo.findById(id).orElse(null);
 
         if (product == null) {

@@ -18,7 +18,7 @@ public interface ProductMapper {
     @Mapping(source = "price", target = "price")
     ProductDTO toDto(Product prod);
     Product toEntity(ProductDTO create_product);
-//    @Mapping(target = "id" , ignore = true)
+    @Mapping(target = "id" , ignore = true)
     void update(ProductDTO UPDATE_REQUEST, @MappingTarget Product p);
 
 
